@@ -1,0 +1,24 @@
+$gray : #d3d3d3;
+$green : #75B975;
+$bordercolor : #333;
+$break-small: 992px;
+$break-large: 1000px;
+
+.col-md-3{
+  width: 23%;
+  margin: .5em;
+  border: 0.3em solid $bordercolor;
+  @media screen and (max-width: $break-small) {
+    width: inherit;
+  }
+  @media screen and (min-width: $break-large) {
+    width: 20%;
+  }
+}
+a{
+  font-size: 1.5em;
+}
+#rowcontainer{
+  display: block;
+  margin: auto;
+}
