@@ -10,7 +10,14 @@
   </head>
   <body>
 <div class="jumbotron">
-  <h1>Repo Checker</h1>
+  <div class="col-md-4" id="pic">
+  </div>
+  <div class="col-md-4">
+    <h1 id="header">Repo Checker</h1>
+  </div>
+  <div class="col-md-4" id="follower">
+  </div>
+
 </div>
     <div class="container">
       <form class="form" id="user">
@@ -18,11 +25,13 @@
           <label for="username">Username</label>
           <input class="form-control" name="username" id="username"></input>
         </div>
-        <button type="submit" class="btn btn-lg btn-success">Submit</button>
+        <button type="submit" class="btn mybtn-color">Submit</button>
       </form>
-      <div id="rowcontainer">
-        <div id="row1" class="row">
-        </div>
+      <ol id="repolist">
+      </ol>
+      <div id="centerpag">
+        <ul class="pagination pagination-lg">
+        </ul>
       </div>
     </div>
   </body>

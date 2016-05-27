@@ -1,8 +1,12 @@
 $gray : #d3d3d3;
+$darkgray : #939393;
 $green : #75B975;
 $bordercolor : #333;
+$red : #88050C;
+$darkred : #420205;
 $break-small: 992px;
 $break-large: 1000px;
+$break-medium: 768px;
 
 .col-md-3{
   width: 23%;
@@ -15,10 +19,138 @@ $break-large: 1000px;
     width: 20%;
   }
 }
-a{
-  font-size: 1.5em;
+form{
+  margin-bottom: 2em;
+  text-align: center;
+}
+li{
+  font-size: 18px;
+  @media screen and (min-width: $break-medium) {
+    font-size: 22px;
+  }
 }
 #rowcontainer{
   display: block;
   margin: auto;
+}
+.jumbotron{
+  background: $bordercolor;
+  color: $gray;
+  border-bottom: 0.5em solid $red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: 8em;
+  @media screen and (min-width: $break-medium) {
+    height: 13em;
+  }
+  a{
+    color: $gray;
+  }
+  a:hover{
+    color: $darkgray;
+  }
+}
+.container{
+  padding-top: 130px;
+  @media screen and (min-width: $break-medium) {
+    padding-top: 215px;
+  }
+}
+#pic{
+  @media screen and (min-width: $break-small) {
+      padding-left: 4em;
+  }
+
+}
+#profilepic{
+  border-radius: 1em;
+  display: none;
+  @media screen and (min-width: $break-small) {
+    display: block;
+    margin: auto;
+    width: 10em;
+    padding: 0;
+    margin: auto;
+  }
+}
+.nobullet{
+   list-style-type: none;
+}
+.innertext{
+  font-size: 15px;
+  @media screen and (min-width: $break-medium) {
+    font-size: 15px;
+  }
+}
+#centerpag{
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+    font-size: 25px;
+    z-index: 3;
+    color: $darkred;
+    @media screen and (min-width: $break-medium) {
+        font-size: 35px;
+    }
+}
+.pagination > li > a,
+.pagination > li > span {
+  font-size: 18px;
+  z-index: 3;
+  color: $red;
+  @media screen and (min-width: $break-medium) {
+      font-size: 25px;
+  }
+
+}
+a{
+  color: $red;
+}
+a:hover{
+  color: $darkred;
+}
+label{
+  font-size: 15px;
+  @media screen and (min-width: $break-medium) {
+    font-size: 22px;
+  }
+}
+.mybtn-color{
+  color: $gray;
+  background-color: $red;
+  border: 0.2em solid $bordercolor;
+  @media screen and (min-width: $break-medium) {
+    height: 60px;
+    font-size: 24px;
+  }
+}
+
+.mybtn-color:hover{
+  color: $gray;
+  background-color: $bordercolor;
+  border: 0.2em solid  $red;
+  @media screen and (min-width: $break-medium) {
+    height: 60px;
+    font-size: 24px;
+  }
+}
+#username{
+  height: 35px;
+  font-size: 15px;
+  @media screen and (min-width: $break-medium) {
+    height: 60px;
+    font-size:  24px;
+  }
+
 }

@@ -1,24 +1,25 @@
 var apiKey = require("./../.env").ApiKey;
+var parse = require('parse-link-header');
 
-exports.getRepos = function(user){
-  $.get('https://api.github.com/users/' + user + '/repos?sort=updated?access_token=' + apiKey).then(function(response){
-    var arrayOfRepos = response;
-    displayRepos(arrayOfRepos);
+RepoInfo = function(response, xhr) {
+  this.user = response[0].owner.login;
+  this.repos = response;
+  this.pages = parse(xhr.getResponseHeader('link'));
+};
+
+exports.getRepos = function(user, displayRepos, page){
+  $.get('https://api.github.com/users/' + user + '/repos?sort=updated&per_page=6&access_token=' + apiKey + "&page=" + page).then(function(response, success, xhr){
+    var repoInfo = new RepoInfo(response, xhr);
+    displayRepos(repoInfo);
   }).fail(function(error){
-    console.log(error.responseJSON.message);
+    $("#repolist").text("Unable to Find User");
   });
 };
 
-var displayRepos = function(arrayOfRepos){
-  var x = 0;
-  var rowcount = 1;
-  arrayOfRepos.forEach(function(value, index){
-    if(x === 4){
-      rowcount++;
-      x = 0;
-      $("#rowcontainer").append("<div class='row' id='row" + rowcount + "'></div>");
-    }
-    $("#row"+rowcount).append("<a href='" + value.html_url + "' target='_blank'><div class='col-md-3'>" + value.name + "</div></a>")
-    x++;
+exports.getUser = function(user, displayUser){
+  $.get('https://api.github.com/users/' + user + '?access_token=' + apiKey).then(function(response){
+    displayUser(response);
+  }).fail(function(error){
+
   });
-}
+};

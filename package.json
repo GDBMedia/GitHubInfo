@@ -28,6 +28,7 @@
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
     "jshint": "^2.9.2",
+    "parse-link-header": "^0.4.1",
     "vinyl-source-stream": "^1.1.0"
   }
 }
