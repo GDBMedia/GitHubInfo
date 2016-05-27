@@ -8,7 +8,7 @@ A web page made in with JavaScript and HTML that allows you to search any GitHub
 
 ## Setup/Installation Requirements
 
-* Clone repository or visit
+* Clone repository or visit: http://gdbmedia.github.io/GitHubInfo/
 * Install Node Package Manager
 * Install Bower
 * Install Ruby
