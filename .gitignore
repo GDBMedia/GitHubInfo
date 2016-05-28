@@ -37,6 +37,7 @@ Thumbs.db
 
 # Folders #
 ########
+build/
 bower_components/
 node_modules/
 tmp/
