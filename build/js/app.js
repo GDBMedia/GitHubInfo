@@ -1,5 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-exports.ApiKey = "86134a5344f9789ee02bacb3b315f6dfda20b292"; 
+exports.ApiKey = "c071ae46b54475edf327b16a44b079b4ae73144a";
 
 },{}],2:[function(require,module,exports){
 var apiKey = require("./../.env").ApiKey;
@@ -11,8 +11,8 @@ RepoInfo = function(response, xhr) {
   this.pages = parse(xhr.getResponseHeader('link'));
 };
 
-exports.getRepos = function(user, displayRepos, page){
-  $.get('https://api.github.com/users/' + user + '/repos?sort=updated&per_page=6&access_token=' + apiKey + "&page=" + page).then(function(response, success, xhr){
+exports.getRepos = function(user, displayRepos, page, num){
+  $.get('https://api.github.com/users/' + user + '/repos?sort=updated&per_page=' + num + '&access_token=' + apiKey + "&page=" + page).then(function(response, success, xhr){
     var repoInfo = new RepoInfo(response, xhr);
     displayRepos(repoInfo);
   }).fail(function(error){
@@ -1807,15 +1807,7 @@ var dateFormat = require('dateformat');
 
 var displayRepos = function(repoInfo){
   $(".pagination").text("");
-  $("#repolist").text("");
-  repoInfo.repos.forEach(function(repo){
-    var date = dateFormat(repo.created_at, "mmmm dS, yyyy");
-    if(repo.description){
-      $("#repolist").append("<li><a href='" + repo.html_url + "' target='_blank'>" + repo.name + "</a><ul><li class='innertext'>Description: " + repo.description + "</li><li class='innertext'>Date Created: " + date + "</li><li class='innertext'>Main Language: " + repo.language + "</li></ul></li><hr>");
-    }else{
-      $("#repolist").append("<li><a href='" + repo.html_url + "' target='_blank'>" + repo.name + "</a><ul><li class='innertext'>Date Created: " + date + "</li><li class='innertext'>Main Language: " + repo.language + "</li></ul></li><hr>");
-    }
-  });
+    displayRepos2(repoInfo);
     for (i=1; i < (parseInt(repoInfo.pages.last.page) + 1); i++) {
         $(".pagination").append("<li><a class='page'>" + i + "</a></li>");
       }
@@ -1857,7 +1849,8 @@ $(document).ready(function(){
   $("#user").submit(function(e){
     e.preventDefault();
     var user = $("#username").val();
-    getRepos(user, displayRepos, 1);
+    var num = $("#results").val();
+    getRepos(user, displayRepos, 1, num);
     getUser(user, displayUser);
   });
 

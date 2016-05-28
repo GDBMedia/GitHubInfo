@@ -7,8 +7,8 @@ RepoInfo = function(response, xhr) {
   this.pages = parse(xhr.getResponseHeader('link'));
 };
 
-exports.getRepos = function(user, displayRepos, page){
-  $.get('https://api.github.com/users/' + user + '/repos?sort=updated&per_page=6&access_token=' + apiKey + "&page=" + page).then(function(response, success, xhr){
+exports.getRepos = function(user, displayRepos, page, num){
+  $.get('https://api.github.com/users/' + user + '/repos?sort=updated&per_page=' + num + '&access_token=' + apiKey + "&page=" + page).then(function(response, success, xhr){
     var repoInfo = new RepoInfo(response, xhr);
     displayRepos(repoInfo);
   }).fail(function(error){

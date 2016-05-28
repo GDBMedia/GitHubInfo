@@ -34,6 +34,7 @@ li{
   margin: auto;
 }
 .jumbotron{
+  z-index: 2;
   background: $bordercolor;
   color: $gray;
   border-bottom: 0.5em solid $red;

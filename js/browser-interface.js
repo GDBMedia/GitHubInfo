@@ -4,15 +4,7 @@ var dateFormat = require('dateformat');
 
 var displayRepos = function(repoInfo){
   $(".pagination").text("");
-  $("#repolist").text("");
-  repoInfo.repos.forEach(function(repo){
-    var date = dateFormat(repo.created_at, "mmmm dS, yyyy");
-    if(repo.description){
-      $("#repolist").append("<li><a href='" + repo.html_url + "' target='_blank'>" + repo.name + "</a><ul><li class='innertext'>Description: " + repo.description + "</li><li class='innertext'>Date Created: " + date + "</li><li class='innertext'>Main Language: " + repo.language + "</li></ul></li><hr>");
-    }else{
-      $("#repolist").append("<li><a href='" + repo.html_url + "' target='_blank'>" + repo.name + "</a><ul><li class='innertext'>Date Created: " + date + "</li><li class='innertext'>Main Language: " + repo.language + "</li></ul></li><hr>");
-    }
-  });
+    displayRepos2(repoInfo);
     for (i=1; i < (parseInt(repoInfo.pages.last.page) + 1); i++) {
         $(".pagination").append("<li><a class='page'>" + i + "</a></li>");
       }
@@ -54,7 +46,8 @@ $(document).ready(function(){
   $("#user").submit(function(e){
     e.preventDefault();
     var user = $("#username").val();
-    getRepos(user, displayRepos, 1);
+    var num = $("#results").val();
+    getRepos(user, displayRepos, 1, num);
     getUser(user, displayUser);
   });
 
