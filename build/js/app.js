@@ -1813,7 +1813,7 @@ var displayRepos = function(repoInfo){
       }
   $(".page").click(function(e){
       e.preventDefault();
-      getRepos(repoInfo.user, displayRepos2, this.innerHTML);
+      getRepos(repoInfo.user, displayRepos2, this.innerHTML, $("#results").val());
     });
 };
 
