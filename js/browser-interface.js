@@ -4,17 +4,17 @@ var dateFormat = require('dateformat');
 
 var displayRepos = function(repoInfo){
   $(".pagination").text("");
-    displayRepos2(repoInfo);
+    displayReposWithoutPagination(repoInfo);
     for (i=1; i < (parseInt(repoInfo.pages.last.page) + 1); i++) {
         $(".pagination").append("<li><a class='page'>" + i + "</a></li>");
       }
   $(".page").click(function(e){
       e.preventDefault();
-      getRepos(repoInfo.user, displayRepos2, this.innerHTML, $("#results").val());
+      getRepos(repoInfo.user, displayReposWithoutPagination, this.innerHTML, $("#results").val());
     });
 };
 
-var displayRepos2 = function(repoInfo){
+var displayReposWithoutPagination = function(repoInfo){
   $("#repolist").text("");
   repoInfo.repos.forEach(function(repo){
     var date = dateFormat(repo.created_at, "mmmm dS, yyyy");
