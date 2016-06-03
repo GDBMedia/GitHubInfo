@@ -1,4 +1,4 @@
-var apiKey = require("./../.env").ApiKey;
+var apiKey = require("./../.env").apiKey;
 var parse = require('parse-link-header');
 
 RepoInfo = function(response, xhr) {
