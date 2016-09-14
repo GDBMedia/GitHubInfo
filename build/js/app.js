@@ -15,6 +15,7 @@ exports.getRepos = function(user, displayRepos, page, num){
   $.get('https://api.github.com/users/' + user + '/repos?sort=updated&per_page=' + num + '&access_token=' + apiKey + "&page=" + page).then(function(response, success, xhr){
     var repoInfo = new RepoInfo(response, xhr);
     displayRepos(repoInfo);
+    consoe.log(repoInfo);
   }).fail(function(error){
     $("#repolist").text("Unable to Find User");
   });
